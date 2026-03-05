@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "name": "Blusa de gato abstracto",
-    "price": "8",
+    "name": "Blusa Gato Abstracto",
+    "price": "8$",
     "category": "Blusas",
     "desc": "Diseño minimalista en tela fresca.",
     "sizes": ["S", "M", "L"],
     "colors": ["Blanco"],
-    "images": ["img/blusa_gato.png"]
+    "images": ["img/gato_lujo.png"]
   },
   {
     "id": 2,
-    "name": "Franela Fresh Sublimé",
-    "price": "12",
-    "category": "Franelas",
+    "name": "Blusa Flor Beige",
+    "price": "7$",
+    "category": "Blusas",
     "desc": "Nueva colección 2026.",
-    "sizes": ["M", "L"],
-    "colors": ["Gris"],
-    "images": ["img/franela_nueva.png"]
+    "sizes": ["S","M", "L"],
+    "colors": ["Blanco"],
+    "images": ["img/flor_lujo.png"]
   }
 ]
