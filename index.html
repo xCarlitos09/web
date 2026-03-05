@@ -68,7 +68,6 @@
             background: rgba(255,255,255,0.6);
             font-family: inherit;
             font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
 
         /* FILTROS DINÁMICOS */
@@ -96,7 +95,6 @@
             background: var(--rose);
             color: white;
             border-color: var(--rose);
-            box-shadow: 0 5px 15px rgba(255,183,178,0.3);
         }
 
         /* CATALOGO GRID */
@@ -115,7 +113,7 @@
             border-radius: 35px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.4);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.5s;
             cursor: pointer;
             position: relative;
         }
@@ -171,18 +169,6 @@
             width: 100%;
             border-radius: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .details h1 { font-size: 2.5rem; margin: 0; }
-        
-        select {
-            width: 100%;
-            padding: 14px;
-            border-radius: 15px;
-            border: 1px solid #eee;
-            margin-bottom: 25px;
-            font-family: inherit;
         }
 
         .btn-order {
@@ -195,7 +181,6 @@
             font-weight: bold;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: 0.3s;
         }
 
         /* WHATSAPP FLOAT */
@@ -213,17 +198,14 @@
             gap: 14px;
             cursor: pointer;
             box-shadow: 0 12px 40px rgba(37,211,102,0.4);
-            transition: 0.3s;
         }
-
-        .cart-float:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">Sublimé Studio</div>
-    <input type="text" id="q" class="search-bar" placeholder="¿Qué buscas hoy?" onkeyup="render()">
+    <input type="text" id="q" class="search-bar" placeholder="¿Qué prenda buscas hoy?" onkeyup="render()">
     <div class="filters" id="f"></div>
 </header>
 
@@ -240,7 +222,7 @@
 </div>
 
 <script>
-    // CONFIGURACIÓN: Cambia esto por tu usuario y repo de GitHub
+    // CONFIGURACIÓN DINÁMICA
     const GITHUB_USER = "xCarlitos09"; 
     const REPO_NAME = "websublime"; 
 
@@ -248,7 +230,7 @@
 
     async function init() {
         try {
-            // Buscamos el archivo JSON en tu repositorio
+            // Carga el archivo productos.json desde tu repositorio de GitHub
             const response = await fetch(`https://${GITHUB_USER}.github.io/${REPO_NAME}/merch.json`);
             allProducts = await response.json();
             renderF();
@@ -274,9 +256,10 @@
             <div class="card" onclick="openM(${p.id})">
                 <img src="${p.images[0]}" onerror="this.src='https://via.placeholder.com/400x500?text=Sublimé+Studio'">
                 <div class="card-body">
-                    <small style="text-transform:uppercase; color:#aaa; letter-spacing:1px;">${p.category}</small>
-                    <h3 style="margin:10px 0;">${p.name}</h3>
+                    <small style="text-transform:uppercase; color:#aaa;">${p.category}</small>
+                    <h3>${p.name}</h3>
                     <p class="price">$${p.price}</p>
+                    <button style="background:var(--blue); border:none; padding:10px 20px; border-radius:15px; cursor:pointer; font-weight:bold; color:#5a7fb2; width:100%;">+ Añadir</button>
                 </div>
             </div>`).join('');
     }
@@ -290,12 +273,12 @@
             <div class="details">
                 <h1>${activeP.name}</h1>
                 <p class="price" style="font-size:2.5rem;">$${activeP.price}</p>
-                <p style="line-height:1.7; color:#666; margin-bottom:30px;">${activeP.desc}</p>
-                <label><b>Selecciona Talla:</b></label>
-                <select id="sz">${activeP.sizes.map(s => `<option>${s.trim()}</option>`).join('')}</select>
-                <label><b>Color / Diseño:</b></label>
-                <select id="cl">${activeP.colors.map(c => `<option>${c.trim()}</option>`).join('')}</select>
-                <button onclick="addC()" class="btn-order">Añadir al Pedido</button>
+                <p style="line-height:1.7; color:#666;">${activeP.desc}</p>
+                <label style="font-weight:700; display:block; margin:20px 0 10px;">Talla:</label>
+                <select id="sz" style="width:100%; padding:14px; border-radius:15px; border:1px solid #eee;">${activeP.sizes.map(s => `<option>${s}</option>`).join('')}</select>
+                <label style="font-weight:700; display:block; margin:20px 0 10px;">Color:</label>
+                <select id="cl" style="width:100%; padding:14px; border-radius:15px; border:1px solid #eee;">${activeP.colors.map(c => `<option>${c}</option>`).join('')}</select>
+                <button onclick="addC()" class="btn-order" style="margin-top:20px;">Añadir al Pedido</button>
             </div>`;
         document.getElementById('m').style.display = 'block';
         document.body.style.overflow = 'hidden';
@@ -325,4 +308,3 @@
 </script>
 </body>
 </html>
-
