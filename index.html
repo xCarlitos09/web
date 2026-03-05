@@ -223,7 +223,7 @@
 
 <header>
     <div class="logo">Sublimé Studio</div>
-    <input type="text" id="q" class="search-bar" placeholder="¿Qué buscas hoy, Carlos?" onkeyup="render()">
+    <input type="text" id="q" class="search-bar" placeholder="¿Qué buscas hoy?" onkeyup="render()">
     <div class="filters" id="f"></div>
 </header>
 
@@ -249,7 +249,7 @@
     async function init() {
         try {
             // Buscamos el archivo JSON en tu repositorio
-            const response = await fetch(`https://${GITHUB_USER}.github.io/${REPO_NAME}/productos.json`);
+            const response = await fetch(`https://${GITHUB_USER}.github.io/${REPO_NAME}/merch.json`);
             allProducts = await response.json();
             renderF();
             render();
@@ -325,3 +325,4 @@
 </script>
 </body>
 </html>
+
