@@ -1,0 +1,43 @@
+[
+    {
+        "id": 1772733982164,
+        "name": "gato abstracto",
+        "price": "8",
+        "desc": "Blusa moderna con dise\u00f1o colorido",
+        "sizes": [
+            "S",
+            "M",
+            "L"
+        ],
+        "colors": [
+            "Blanco"
+        ],
+        "category": "Franelas",
+        "status": "activo",
+        "images": [
+            "img/gato.png",
+            "img/c9162d02adc4c6a5dc79bbeeb09c7b8b-Photoroom.png"
+        ]
+    },
+    {
+        "id": 1772734871176,
+        "name": "Blusa con Flor Blanca",
+        "price": "6",
+        "category": "Franelas",
+        "desc": "Tela microdurazno blanca, suave y ligera.",
+        "sizes": [
+            "s",
+            "m",
+            "l"
+        ],
+        "colors": [
+            "Blanco"
+        ],
+        "status": "activo",
+        "images": [
+            "img/WhatsApp Image 2026-03-05 at 2.19.18 PM (1).jpeg",
+            "img/WhatsApp Image 2026-03-05 at 2.19.18 PM.jpeg",
+            "img/WhatsApp Image 2026-03-05 at 2.19.17 PM (2).jpeg"
+        ]
+    }
+]

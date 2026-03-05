@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Generador | Sublimé Studio</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 50px; background: #f0f2f5; color: #333; }
+        .box { background: white; padding: 40px; border-radius: 25px; max-width: 600px; margin: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h2 { text-align: center; margin-bottom: 30px; }
+        label { font-weight: bold; font-size: 0.9rem; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0 20px; border-radius: 12px; border: 1px solid #ddd; box-sizing: border-box; outline: none; }
+        button { width: 100%; padding: 15px; background: #ffb7b2; border: none; color: white; font-weight: bold; border-radius: 12px; cursor: pointer; font-size: 1rem; }
+        #out { background: #333; color: #0f0; padding: 25px; border-radius: 15px; margin-top: 30px; white-space: pre-wrap; font-family: 'Courier New', monospace; font-size: 12px; border: 2px solid #555; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h2>✨ Generador de Productos</h2>
+    <label>Nombre de la prenda:</label>
+    <input type="text" id="n" placeholder="Ej: Blusa de gato abstracto">
+    <label>Precio ($):</label>
+    <input type="number" id="p" placeholder="8">
+    <label>Categoría:</label>
+    <input type="text" id="c" placeholder="Franelas, Blusas, Pijamas...">
+    <label>Descripción:</label>
+    <textarea id="d" placeholder="Detalles de la prenda..."></textarea>
+    <label>Tallas (separadas por coma):</label>
+    <input type="text" id="sz" placeholder="S, M, L">
+    <label>Colores (separados por coma):</label>
+    <input type="text" id="cl" placeholder="Blanco, Negro, Rojo">
+    <label>Ruta de la imagen:</label>
+    <input type="text" id="img" placeholder="img/nombre_foto.png">
+    <button onclick="gen()">GENERAR CÓDIGO PARA GITHUB</button>
+    <div id="out">Copia el resultado aquí...</div>
+</div>
+<script>
+    function gen() {
+        const item = { 
+            id: Date.now(), 
+            name: document.getElementById('n').value, 
+            price: document.getElementById('p').value, 
+            category: document.getElementById('c').value, 
+            desc: document.getElementById('d').value, 
+            sizes: document.getElementById('sz').value.split(',').map(s => s.trim()), 
+            colors: document.getElementById('cl').value.split(',').map(c => c.trim()), 
+            images: [document.getElementById('img').value] 
+        };
+        document.getElementById('out').innerText = JSON.stringify(item, null, 4) + ",";
+        alert("¡Código generado! Ahora pégalo en el array 'products' de tu index.html en GitHub.");
+    }
+</script>
+</body>
+</html>
